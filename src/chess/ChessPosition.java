@@ -4,8 +4,8 @@ import boardgame.Position;
 
 public class ChessPosition {
 	
-	private final char column;
-	private final int row;
+	private char column;
+	private int row;
 	
 	public ChessPosition(char column, int row) {
 		if (column < 'a' || column > 'h' || row < 1 || row > 8) {
