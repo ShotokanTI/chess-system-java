@@ -1,9 +1,6 @@
 package application;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import chess.ChessException;
 import chess.ChessMatch;
@@ -40,7 +37,17 @@ public class Program {
 				}
 				if(chessMatch.getPromoted() != null){
 					System.out.println("Enter piece for promotion (B/N/R/Q): ");
-					String type = sc.nextLine();
+					String type = sc.nextLine().toUpperCase();
+					String[] permittedChars = {"B", "R", "N","Q"};
+
+					boolean existInvalidCharacter = Arrays.asList(permittedChars).contains(type);
+
+					while(!existInvalidCharacter){
+						System.out.println("Invalid value! Enter piece for promotion (B/N/R/Q):");
+						type = sc.nextLine().toUpperCase();
+						existInvalidCharacter = Arrays.asList(permittedChars).contains(type);
+					}
+
 					chessMatch.replacePromotedPiece(type);
 				}
 			}
